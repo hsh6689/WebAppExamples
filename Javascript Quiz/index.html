@@ -9,19 +9,32 @@
   </head>
 
   <body>
+    <header>
+      <h1 id="timer"></h1>
+    </header>
   	<div class="container">
-  		<h1 class="welcome">Welome to coding practice quizs </h1>
-  		<h1 id="timer"></h1>
-  		<h3 id="questions">default question</h3>
-  		<br>
-  		<button class="ans" id="ans1">ans1</button>
-  		<br>
-  		<button class="ans" id="ans2">ans2</button>
-  		<br>
-  		<button class="ans" id="ans3">ans3</button>
-  		<br>
-  		<button class="ans" id="ans4">ans4</button>
-  		
+
+      <div class="intro"> 
+  		  <h1 class="welcome">Welome to coding practice quizs </h1>
+        <button class="start-button">Start!</button>
+      </div>
+
+      <div class="quizs">
+    		<h3 id="questions">default question</h3>
+    		<br>
+    		<button class="ans" id="ans1"></button>
+    		<br>
+    		<button class="ans" id="ans2"></button>
+    		<br>
+    		<button class="ans" id="ans3"></button>
+    		<br>
+    		<button class="ans" id="ans4"></button>
+  		</div>
+
+      <div class="result">
+        <h2 class="result-score"></h2>
+      </div>
+
   	</div>
   	<script src="./assets/js/script.js"></script>
   </body>

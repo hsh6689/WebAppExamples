@@ -1,6 +1,3 @@
-var questionEl=document.getElementById('questions');
-var timerEl=document.getElementById('timer');
-
 const myQuestions = [
   {
 	question: "Question1?",
@@ -44,15 +41,41 @@ const myQuestions = [
   }
 ];
 
+var questionEl=document.getElementById("questions");
+var timerEl=document.getElementById("timer");
+
+//Div elements
+var introDiv = document.querySelector(".intro");
+var quizDiv = document.querySelector(".quizs");
+var resultDiv = document.querySelector(".result");
+
+
+//variables
+var startButton=document.querySelector(".start-button");
+var resultScore=document.querySelector(".result-score");
+
+
 //get values of answers
 var ans1=document.getElementById('ans1');
 var ans2=document.getElementById('ans2');
 var ans3=document.getElementById('ans3');
 var ans4=document.getElementById('ans4');
 
-function codingQuiz(){
-	var timeLeft = 10;
+function init(){
+		quizDiv.textContent="";
+		resultDiv.textContent	="";
+}
 
+
+
+function startGame(){
+		codingQuiz();
+}
+
+//The codingQuiz function is called when the start button is clicked
+function codingQuiz(){
+	var solved = false; 
+	var timeLeft = 10;
 	var timeInterval = setInterval(function () {
 	  timerEl.textContent = timeLeft;
 	  timeLeft--;
@@ -64,8 +87,7 @@ function codingQuiz(){
 	//if not, show questions
 	else {
 	  for(var i=0; i<myQuestions.length; i++){
-	  	var solved = false;
-	      questionEl.textContent=myQuestions[i].question;
+	    questionEl.textContent=myQuestions[i].question;
 		  ans1.textContent=myQuestions[i].answers["a"];
 		  ans2.textContent=myQuestions[i].answers["b"];
 		  ans3.textContent=myQuestions[i].answers["c"];
@@ -77,8 +99,29 @@ function codingQuiz(){
   },1000);
 }
 
+function showQuestions(questions, quizContiner){
+	//we need a place to store teh output and teh answer choices
+	var output=[];
+	var answers; 
+	for(var i=0; i<myQuestions.length; i++){
+			answers=[];
+
+
+	      questionEl.textContent=myQuestions[i].question;
+		  ans1.textContent=myQuestions[i].answers["a"];
+		  ans2.textContent=myQuestions[i].answers["b"];
+		  ans3.textContent=myQuestions[i].answers["c"];
+		  ans4.textContent=myQuestions[i].answers["d"];
+		
+	  }
+
+
+}
+
 function showResult() {
-	return;
+	//
+	quizDiv.textContent="";
+	resultScore.textContent="result";
 }
 
 
@@ -96,4 +139,5 @@ ans4.addEventListener("click", function(event) {
 	answerQuiz(3);
 });
 
-codingQuiz();
+startButton.addEventListener("click", startGame);
+init();
